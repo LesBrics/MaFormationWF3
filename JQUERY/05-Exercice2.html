@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire de Contact</title>
+</head>
+<body>
+
+
+    <form id="MonFormulaire" action="contact.php" method="GET">
+        <fieldset>
+            <input type="text" id="fullname" placeholder="Nom et Prénom">
+            <input type="email" id="email" placeholder="Email">
+            <input type="tel" id="tel" placeholder="Téléphone">
+            <input type="text" id="sujet" placeholder="Sujet">
+            <textarea id="message" cols="30" rows="10" placeholder="Message..."></textarea>
+            <input type="submit" value="Envoyer ma Demande">
+        </fieldset>
+    </form>
+
+    <script
+        src="http://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+
+
+
+ <script>
+        /* -------------------------------------------------
+        |             ~~~   LA CONSIGNE     ~~~            |
+        |                                                  |
+        | A partir du Formulaire de Contact ci-dessus :    |
+        |                                                  |
+        |   1. Afficher à l'utilisateur un Récapitulatif   |
+        |   de sa demande de contact.                      |
+        |                                                  |
+        ------------------------------------------------- */
+    
+    
+    // 1 Attente aie me DOM soit chargé !
+    $(function () {
+
+    // 2 ecouter l'événement
+    $('#MonFormulaire').on('submit', function(e){              
+
+            //3 stopper l'envoi           
+            e.preventDefault();
+            
+            //4 recuperation des infos
+            $(this).replaceWith('<p>Bonjour ! Verifiez svp vos coordonnées.' + '<br>' + 'Nom : ' + 
+            $('#fullname').val() + '<br>' + 'Email : ' + $('#email').val() + '<br>' + 'Téléphone : ' + 
+            $('#tel').val() + '<br>' + 'Sujet : ' + $('#sujet').val() + '<br>' + 'Message : ' + 
+            $('#message').val() +'</p>');
+
+            console.log($(this));
+       });
+});
+    
+    </script>
+
+
+
+</body>
+</html>

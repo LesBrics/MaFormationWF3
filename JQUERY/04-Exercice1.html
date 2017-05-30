@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercice 1 JQ</title>
+</head>
+<body>
+
+     <form action="traitement.php" id="MonFormulaire">
+         <!-- verifier le ACTION dans le forms-->
+         <input type="text" required placeholder="Nom et Prénom" id="nomcomplet">
+         <input type="submit" value="Je valide">
+     </form>
+
+
+    <!-- Intégration de la librairie JQuery  - CDN is faster, uses closest 
+    server, has cache.. Si vous comptez travailler offline, telechargez le
+    fichier-->
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+
+
+    <script>
+   
+      $('#MonFormulaire').on('submit', function(e){
+                //-- cette fonction anonyme sera executé a la soumission du formulaire.
+                // on = addEventListener
+                
+                // Permet d'annuler l'action par defaut du submit du formulaire
+                e.preventDefault(); //preventDefault stop la REDIRECTION
+                
+                // on remplace notre formulaire par le paragraphe ci-dessous.
+                $(this).replaceWith('<p>Bonjour ' + $('#nomcomplet').val() + ' !</p>');
+                console.log($(this));
+
+//PREVENTDEFAULT EXAMEN
+// "this" fait reference à MonFormulaire
+// "replaceWith" voir dans la doc
+
+             });
+
+    </script>
+
+</body>
+</html>
+
