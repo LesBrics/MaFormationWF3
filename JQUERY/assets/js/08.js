@@ -1,21 +1,10 @@
 
 
-// validation e-mail
-function validateEmail(email){
-	var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-	var valid = emailReg.test(email);
-
-	if(!valid) {
-        return false;
-    } else {
-    	return true;
-    }
-}
 
 // Initialisation de JQuery (DOM READY)
 
 
-$(function(){
+    $(function(){
 
     // Declaration des variables
     var Contacts = [];
@@ -42,12 +31,31 @@ $(function(){
 
         }
 
+        //Vérification de la présence d'un contact dans Contacts
+        
+        
+        // validation e-mail
+        function validateEmail(email){
+	var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+	var valid = emailReg.test(email);
+
+	        if(!valid) {
+                return false;
+                } else {
+    	        return true;
+                }
+        }
+
     
         //============TRAITEMENT FORMULAIRE=======================
 
+        // -- Detection de la soumission de mon formulaire
+        
         $('#contact').on('submit', function(e){ 
                 e.preventDefault();
 
+       
+        // -- declaration des variables
         var nom        =  $('#nom');
         var prenom     =  $('#prenom');
         var email      =  $('#email');
@@ -62,6 +70,7 @@ $(function(){
 
 
         //============VERIFICATION===============
+
 
         //1- vérification du Nom
         if(nom.val().length == 0) {
@@ -87,13 +96,15 @@ $(function(){
                 $("<p class='text-danger' > Vérifiez votre numéro de téléphone</p>").appendTo(tel.parent());
         };
 
+
         //==============RECUPERER LA VALEUR DES INPUTS===========
-        
+
+
         let Contact = [
-            nom.val(),
-            prenom.val(),
-            email.val(),
-            tel.val(),
+        nom.val(),
+        prenom.val(),
+        email.val(),
+        tel.val(),
         ];
 
 
@@ -103,13 +114,9 @@ $(function(){
         
         //==============ADD TO HTML=================
         
-        for(i = 0; i < Contact.length; i++) {
-            $('<tr><td>'nom.val'</td>' + '<td>'prenom.val'</td>' + '<td>'email.val'</tr>' + '<td>'tel.val'</tr>').appendTo($('#lesContacts');
-            $('.alert-contact').remove();
-            $('.aucuncontact').remove();
+        
 
 
-            }
         });
 
     });
